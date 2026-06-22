@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ignored Browser Title</title>
+    <base href="https://assets.example.test/base/path/" />
+    <link rel="canonical" href="https://example.test/articles/representative" />
+    <meta name="description" content="Representative fixture description" />
+    <meta name="keywords" content="alpha, beta" />
+    <meta property="og:title" content="Representative OG Title" />
+    <meta property="og:site_name" content="Fixture Site" />
+  </head>
+  <body>
+    <main>
+      <article>
+        <h1>Representative Article</h1>
+        <p class="byline">By Ada Lovelace</p>
+        <p>
+          Intro with a <a href="../guide">relative guide</a> and
+          <a href="https://external.example.test/ref">external reference</a>.
+        </p>
+        <p>
+          <img src="images/hero.png" alt="Hero image" />
+        </p>
+        <pre><code id="code-lang-ts">const value = 42;
+console.log(value);
+</code></pre>
+        <p>Inline math <i id="math-inline">fallback</i>.</p>
+        <p id="math-block">fallback</p>
+      </article>
+    </main>
+    <aside style="display: none">Hidden fixture text must not appear.</aside>
+  </body>
+</html>

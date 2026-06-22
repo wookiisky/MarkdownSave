@@ -1,0 +1,424 @@
+:root {
+  --focus: orange;
+  --bg: #ffffff;
+  --fg: #000000;
+  --border: #eeeeee;
+  --primary: #4a90e2;
+  --fg-primary: #eeeeee;
+  --bg-primary: #ecf5ff;
+  --border-primary: #4a90e2;
+  --pre-bg: #eeeeee;
+  --danger: #b33636;
+  --warning: #7b5800;
+  --success: #23633a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #202023;
+    --fg: #f8f8f8;
+    --border: #555555;
+    --bg-primary: hsl(212deg 80% 30%);
+    --pre-bg: #474749;
+    --danger: #f08f8f;
+    --warning: #d9b45c;
+    --success: #80c99b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--pre-bg) var(--bg);
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 20px;
+}
+
+body {
+  margin: auto;
+  padding: 8px;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 16px;
+}
+
+a {
+  color: var(--primary);
+}
+
+pre,
+code {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--pre-bg);
+  color: var(--fg);
+  padding: 0.5em;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  font-weight: 400;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+code {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+input[type="text"],
+textarea {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+input[type="text"] {
+  display: block;
+  width: calc(100% - 40px);
+  border: 1px solid var(--border);
+  padding: 2px 6px;
+  font-family: monospace;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  font-family: monospace;
+}
+
+.options-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.options-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.options-header h1 {
+  margin: 0;
+}
+
+.options-header p {
+  margin: 8px 0 0;
+  color: color-mix(in srgb, var(--fg) 70%, transparent);
+}
+
+.save-indicator,
+.validation-message,
+.restricted-banner {
+  border: 1px solid;
+  border-radius: 5px;
+  background: transparent;
+}
+
+.save-indicator {
+  min-width: 96px;
+  padding: 1em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.validation-message,
+.restricted-banner {
+  margin-bottom: 16px;
+  padding: 14px 18px;
+}
+
+.validation-message p,
+.restricted-banner p,
+.validation-message ul {
+  margin: 0;
+}
+
+.validation-message ul {
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+.validation-message-error,
+.restricted-banner {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.validation-message-warning {
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.validation-message-success {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.options-details {
+  margin-bottom: 20px;
+}
+
+.options-details summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.options-details summary > * {
+  display: inline-block;
+}
+
+.instructions,
+.textbox-container,
+.radio-container > label,
+.checkbox-container > label,
+.button-container {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--bg);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+}
+
+.instructions {
+  margin-top: 12px;
+  padding: 20px;
+}
+
+.instructions p,
+.instructions ul {
+  margin: 0 0 12px;
+}
+
+.instructions ul:last-child,
+.instructions p:last-child {
+  margin-bottom: 0;
+}
+
+.textbox-container,
+.button-container {
+  overflow: hidden;
+  border-color: var(--border-primary);
+  transition: all 0.3s ease-out;
+}
+
+.textbox-container > label,
+.button-container > label {
+  display: inline-block;
+  margin: 8px 20px;
+  font-weight: 600;
+}
+
+.textbox-container > input[type="text"],
+.textbox-container > .input-sizer,
+.button-container .input-sizer {
+  margin: 0 20px 20px;
+}
+
+.input-sizer {
+  position: relative;
+  display: block;
+  width: calc(100% - 40px);
+  min-height: 40px;
+  resize: both;
+  padding: 0;
+  font-family: monospace;
+}
+
+.input-sizer textarea {
+  position: absolute;
+  inset: 0;
+}
+
+.radio-container,
+.checkbox-container,
+.button-container {
+  display: flex;
+  width: calc(100% + 12px);
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin: -12px 0 24px -12px;
+}
+
+.checkbox-container {
+  margin-bottom: 0;
+}
+
+.radio-container > *,
+.checkbox-container > *,
+.button-container > * {
+  margin: 12px 0 0 12px;
+  user-select: none;
+}
+
+.radio-container > h3,
+.checkbox-container > h3,
+.radio-container > p,
+.checkbox-container > p {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.radio-container > div,
+.checkbox-container > input,
+.checkbox-container > label {
+  min-width: 0;
+}
+
+.radio-container > div {
+  display: contents;
+}
+
+.radio-container > label,
+.checkbox-container > label,
+.button-container > label {
+  display: inline-block;
+  max-width: calc(100% - 100px);
+  cursor: pointer;
+  padding: 20px 20px 20px 65px;
+  font-weight: 600;
+  transition: 0.3s ease all;
+}
+
+.radio-container > label:hover,
+.checkbox-container > label:hover,
+.button-container:hover,
+.textbox-container:hover {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
+}
+
+.radio-container > label::before,
+.checkbox-container > label::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 15px);
+  left: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  transition: 0.3s ease background-color;
+}
+
+.radio-container > input[type="radio"],
+.checkbox-container > input[type="checkbox"] {
+  position: absolute;
+  visibility: hidden;
+}
+
+.radio-container > input[type="radio"]:checked + label,
+.checkbox-container > input[type="checkbox"]:checked + label {
+  background: var(--bg-primary);
+  border-color: var(--primary);
+}
+
+.radio-container > input[type="radio"]:checked + label::before,
+.checkbox-container > input[type="checkbox"]:checked + label::before {
+  background: var(--primary);
+}
+
+.radio-container > input[type="radio"]:checked + label::after,
+.checkbox-container > input[type="checkbox"]:checked + label::after {
+  content: "✓";
+  position: absolute;
+  top: calc(50% - 10px);
+  left: 30px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.radio-container > input[type="radio"]:disabled + label,
+.checkbox-container > input[type="checkbox"]:disabled + label,
+.action-button:disabled,
+input:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.radio-container > input[type="radio"]:disabled + label::before,
+.checkbox-container > input[type="checkbox"]:disabled + label::before {
+  background: var(--pre-bg);
+}
+
+.radio-container p,
+.checkbox-container p,
+.radio-container label p,
+.checkbox-container label p {
+  font-weight: 400;
+  white-space: normal;
+  word-break: normal;
+}
+
+.options-spacer {
+  height: 16px;
+}
+
+.import-export-section h2 {
+  margin-top: 0;
+}
+
+.import-export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  resize: none;
+}
+
+.action-button {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary);
+  color: var(--fg-primary);
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.action-button-danger {
+  background-color: color-mix(in srgb, var(--danger) 80%, var(--primary));
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

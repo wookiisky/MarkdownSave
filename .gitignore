@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Local reference repositories
+MarkSnip/
+markdownload/
+
+# Build and test outputs
+dist/
+coverage/
+test-results/
+playwright-report/
+
+# Local caches
+.vite/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Chrome extension package artifacts
+*.crx
+*.pem
+
+# System files
+.DS_Store
+Thumbs.db
